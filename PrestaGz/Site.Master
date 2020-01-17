@@ -1,0 +1,282 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PrestaGz.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en" style="min-height: 100%; position: relative;">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %>PrestaGz</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+
+    <link href="~/Imagenes/PrestaGz.png" rel="shortcut icon" type="image/x-icon" />
+
+    <script src="Style/gruntfile.js"></script>
+
+    <!------------------------------------ BOOSTRAP Y CSS ------------------------------------->
+    <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="/Boostrap/toastr.min.js"></script>
+    <link href="/Boostrap/toastr.min.css" rel="stylesheet" />
+
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="/Style/Estilos.css" rel="stylesheet" type="text/css" />
+
+    <script src="/js/bootstrap.min.js"></script>
+
+    <link href="Style/main.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .auto-style1 {
+            float: left;
+            padding: 15px 15px;
+            font-size: xx-large;
+            line-height: 20px;
+        }
+
+        .auto-style4 {
+            width: 355px;
+            height: 289px;
+        }
+    </style>
+
+
+</head>
+<body style="margin: 0; margin-bottom: 40px;">
+
+    <form runat="server">
+
+        <asp:ScriptManager ID="ScriptPresta" runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+
+        <div class="navbar navbar-inverse navbar-fixed-top" style="opacity: 0.91; border-bottom: 4px solid #FACC2E; background-color: #045FB4; opacity: 0.93">
+            <div class="container">
+                <div class="navbar-header">
+                    <button id="btnDesplegable" runat="server" visible="false" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="row">
+
+                        <article class="col-xs-3 col-sm-3 col-md-1 col-lg-1">
+                            <a id="AMenu" class="auto-style1" style="color: white; height: 20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" runat="server">PrestaGz</a>
+
+                        </article>
+                        <article class="col-xs-9 col-sm-9 col-md-11 col-lg-11">
+
+                            <div id="divInicio" runat="server" style="margin-left: 45%">
+                                <a id="AInicio" style="color: white; height: 20px; font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" runat="server">Inicio</a>
+
+                                <!--PARA ABRIR EL DIALOGO   -->
+                                &nbsp;
+                                <linkbutton  type="button" style="background-color: #045FB4; opacity: 0.93; width: 95px;" id="btnSubscripcion" runat="server" class=" navbar-btn" data-toggle="modal" data-target="#myModal"><span id="spanSubcripcion" runat="server" style="font-size: 80%; height:5%; width:10%; color:white"><strong>Subscribirse</strong></span></linkbutton>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                </div>
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav" style="margin-left: 40%">
+
+                        <label id="UserName" visible="false" runat="server" style="color: white; font-size: 20px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"></label>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <asp:LinkButton Visible="false" Style="color: white; font-size: 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" ID="btnCerrarSesion" Text="Cerrar sesion" runat="server" OnClick="btnCerrarSesion_Click" />
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+
+
+        <br />
+
+        <footer id="footerId" runat="server" style="background-color: black; bottom: 0; width: 100%; height: 60px; background-color: #045FB4; border-top-color: #FACC2E; border-top-width: 2.5px; opacity: 0.93; position: absolute; position: fixed">
+
+
+            <article class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: center">
+
+                <p style="color: white">powered by</p>
+                <p style="color: white; margin-top: -12px; font-size: 16px"><strong>LogicGz  </strong></p>
+                <!--    &copy; <%: DateTime.Now.Year %>  -->
+            </article>
+
+            <article class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: center">
+                <strong id="PTelefono" runat="server">
+                    <p style="color: white">Telefono: 1+(809)829-1110</p>
+                </strong>
+
+                <%--  <a href="tel:+18098291110" target="_blank">
+                <asp:Image Visible="false" ImageUrl="~/Imagenes/Whatsapp.ico" ID="btnWhatsapp" runat="server" Height="42px" Width="44px" />
+                </a>--%>
+            </article>
+
+
+
+        </footer>
+
+    </form>
+
+
+
+    <!--COMIENZA EL DIALOGO SUBSCRIBIRSE -->
+    <ul class="nav navbar-nav" style="color: #93beed">
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #007bff">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2 class="modal-title" id="myModalLabel"><b style="color: white">SUBSCRIPCION</b></h2>
+                    </div>
+
+                    <div style="margin-left:3%">
+                       <b> <asp:Label ID="lblExpiracionPrueba" Visible="false" ForeColor="#cc0000" Text="Tu cuenta gratis a alcanzado el limite de tiempo, para seguir utilizando crea una subcripcion por 5 US$ mensual" runat="server" />  </b>
+                    </div>
+
+                    <article class="col-xs-6 col-sm-6 col-md-5 col-lg-5">
+
+                        <div style="margin-left: 2%">
+
+                            <asp:Image ID="imgPaypal" ImageUrl="~/Imagenes/Paypal.png" Height="48%" Width="48%"  runat="server" />
+                            <br />
+                            <b style="color: #15477c; font-size: smaller;">PayPal, la forma más segura y rápida de pagar en línea.</b>
+
+                           <br />
+
+                        </div>
+    
+                        
+                    </article>
+
+                    <article class="col-xs-6 col-sm-6 col-md-7 col-lg-7">
+
+                        <div>
+
+                            <%--src="https://www.paypalobjects.com/es_XC/i/btn/btn_subscribeCC_LG.gif"--%>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="Q9W8S6JBWC92C">
+                                <input id="ImgPayNow" runat="server" type="image" border="0" src="Imagenes/paynow.png" style="width: 99%" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+                        </div>
+
+                    </article>
+
+
+                    <asp:Label ForeColor="Transparent" ID="lblIdCliente" Text="0" runat="server" />
+                </div>
+                <div class="modal-footer" style="background-color: cornflowerblue">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+
+    </ul>
+    <!--TERMINA MODAL SUBSCRIBIRSE -->
+
+
+
+
+        <!--COMIENZA EL DIALOGO SUBSCRIBIRSE CUANDO EXPIRA EL GRATIS HASTA QUE SE RESUELVA LO DE LLAMAR UN COMPONENTE DE MASTER-->
+    <ul class="nav navbar-nav" style="color: #93beed">
+
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #007bff">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2 class="modal-title" id="myModalLabel"><b style="color: white">SUBSCRIPCION</b></h2>
+                    </div>
+
+                    <div style="margin-left:3%">
+                       <b> <asp:Label ID="Label1" ForeColor="#cc0000" Text="Tu cuenta gratis a alcanzado el limite de tiempo, para seguir utilizando crea una subcripcion por 5 US$ mensual" runat="server" />  </b>
+                    </div>
+
+                    <article class="col-xs-6 col-sm-6 col-md-5 col-lg-5">
+
+                        <div style="margin-left: 2%">
+
+                            <asp:Image ID="Image1" ImageUrl="~/Imagenes/Paypal.png" Height="48%" Width="48%"  runat="server" />
+                            <br />
+                            <b style="color: #15477c; font-size: smaller;">PayPal, la forma más segura y rápida de pagar en línea.</b>
+
+                           <br />
+
+                        </div>
+    
+                        
+                    </article>
+
+                    <article class="col-xs-6 col-sm-6 col-md-7 col-lg-7">
+
+                        <div>
+
+                            <%--src="https://www.paypalobjects.com/es_XC/i/btn/btn_subscribeCC_LG.gif"--%>
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="Q9W8S6JBWC92C">
+                                <input id="Image2" runat="server" type="image" border="0" src="Imagenes/paynow.png" style="width: 99%" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+                        </div>
+
+                    </article>
+
+
+                    <asp:Label ForeColor="Transparent" ID="Label2" Text="0" runat="server" />
+                </div>
+                <div class="modal-footer" style="background-color: cornflowerblue">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+
+    </ul>
+    <!--TERMINA MODAL SUBSCRIBIRSE -->
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+﻿body {
+    
+    background: url("../Imagenes/Fondo.png");
+
+     background-position: center center;
+    /* Para que la imagen de fondo no se repita */
+    background-repeat: no-repeat;
+    /* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
+    background-attachment: fixed;
+    /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
+    background-size:cover;
+
+
+}
+
+
+
+/*#screenLock {
+    width: 100%;
+    background-color: Gray;
+    moz-opacity: 0.5;
+    khtml-opacity:.5;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    z-index: 9998;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#progressMessage {
+    z-index: 9999;
+    background-color: White;
+    position: absolute;
+    top: 0pt;
+    left: 0pt;
+    border: solid 1px black;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    font-family: Arial;
+    font-size: small;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+.loader
+{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width:100px;
+    height:100px;
+    animation:animate 1s linear infinite;
+}
+.loader span{
+    position:absolute;
+    width:50px;
+    height:50px;
+    background:#f00;
+
+}
+.loader span:nth-child(1){
+    top:0;
+    left:0;
+    background:#f79f1f;
+
+
+}
+
+.loader span:nth-child(2){
+    top:0;
+    right:0;
+    background:#12cbc4;
+
+
+}
+.loader span:nth-child(3){
+    bottom:0;
+    left:0;
+    background:#ed4c67;
+
+
+}
+.loader span:nth-child(4){
+    top:0;
+    right:0;
+    background:#a3cb38;
+
+
+}
+
+@keyframes animate
+{
+    0%
+    {
+        width:100px;
+        height:100px;
+    }
+   10% {
+        width: 100px;
+        height: 100px;
+    }
+    50% {
+        width: 150px;
+        height: 150px;
+    }
+    90% {
+        width: 100px;
+        height: 100px;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+    }
+    
+}
+
+
+h4{
+
+  color:white;
+  font-family:Verdana, Geneva, sans-serif;
+
+}
+h2{
+    color:white;
+}
+h1{
+    color:white;
+}
+
+h3{
+    color:white;
+}
+
+p{
+    color:white;
+}
+
+label{
+    color:white;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+button{
+    color:white;
+    font-family:Verdana;
+}
+
+a{
+    color:white;
+}
+
+li{
+    color:white;
+}
+
